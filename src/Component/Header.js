@@ -21,7 +21,7 @@ const Header = () => {
           <Menu onClick={handleClick} selectekeys={[current]} mode='horizontal' className='bg-dark text-white'>
               
               <Item key="home" icon={<RadarChartOutlined />}>
-                  <Link to='/' >GoldenM</Link>
+                  <Link to='/' >CounterApplication</Link>
               </Item>
 
               <Item key="register" icon={<UserAddOutlined/>}className='ms-auto '>

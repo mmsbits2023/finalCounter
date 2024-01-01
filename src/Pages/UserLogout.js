@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import Card from 'react-bootstrap/Card'  
 import { Container } from '@mui/material'
 //import Button from '@mui/material/Button'
-import { NavLink, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import { Avatar } from '@mui/material'
 import { green } from '@mui/material/colors'
 import { Form } from 'react-bootstrap'
@@ -11,11 +11,10 @@ import { Form } from 'react-bootstrap'
 
 
 
-const InvestorLogout= () => {
+const UserLogout= () => {
   const navigate = useNavigate();
   const [data, setData] = useState({
       email:'',
-      phoneNumber: '',
       mpin:''
   });
   const handleInput = (event) => { 
@@ -31,34 +30,26 @@ const InvestorLogout= () => {
           validationErrors.email = "email is not valid"
       }
 
-      if (!data.phoneNumber) {
-          validationErrors.phoneNumber = 'PhoneNumber is required'
-      } else if (data.phoneNumber.length < 10) {
-          validationErrors.phoneNumber = "PhoneNumber should be at least 10 digit "
-      } else if (data.phoneNumber.length > 10) {
-          validationErrors.phoneNumber = "PhoneNumber should be at least 10 digit "
-      }
-      
+          
       if (!data.mpin) {
           validationErrors.mpin = 'Password is required'
-      } else if (data.mpin.length < 8) {
+      } else if (data.mpin.length < 6) {
           validationErrors.mpin = "Password should be at least 9 char"
-      } else if (data.mpin.length > 16) {
+      } else if (data.mpin.length > 9) {
           validationErrors.mpin = "Password should be at least 9 char"
       }
       setErrors(validationErrors);
 
       if (Object.keys(validationErrors).length === 0) {
-          const { email, phoneNumber, mpin } = data;
-          const response = await fetch("http://localhost:9006/investor/logout", {
+          const { email, mpin } = data;
+          const response = await fetch("http://localhost:5001/user/logout", {
               method: "POST",
               headers: {
                   "Content-Type": "application/json"
               },
               body: JSON.stringify({
                   email: email,
-                  phoneNumber: phoneNumber,
-                  mpin: mpin
+                   mpin: mpin
               })
           });
           const result = await response.json();
@@ -98,14 +89,7 @@ const InvestorLogout= () => {
               onChange={handleInput} />
               {errors.email && <span className='errorData'>{ errors.email}</span> }
                       </div>
-                      <div className="mb-1 register"style={{width:"70%",textAlign:"center",marginLeft:"100px"}}>
-                <label htmlFor="PhoneNumberId" className="form-label">
-                    PhoneNumber</label>
-                      <input type="text" name="phoneNumber" className="form-control" id="PhoneNumberId" //autocomplete="off"
-             onChange={handleInput} />
-             {errors.phoneNumber && <span className='errorData'>{ errors.phoneNumber}</span> }
-          </div> 
-              
+                                    
             <div className="mb-1 register"style={{width:"70%",textAlign:"center",marginLeft:"100px"}}>
                 <label htmlFor="PasswordId" className="form-label">
                     Password </label>
@@ -117,18 +101,8 @@ const InvestorLogout= () => {
                        <button type="submit" className="btn btn-primary button "
                       style={{ width: "30%", textAlign: "center", marginLeft: "200px" }}>
                     Logout
-                   </button>                        
-                                      {/* <div className="row p-4 "style={{width:"70%",textAlign:"center",marginLeft:"200px"}}>
-                                           <div  className="col-6 text-right">
-                                <NavLink to="/" component={NavLink}>
-                                  <Button variant="outlined" className="p-1">
-                                    Logout
-                                  </Button>
-                                </NavLink>
-                              </div>                                                                    
-                                      </div>
-  */}
-                          </Form>     
+                         </button>         
+                                </Form>     
                               </section>
                           </Card.Body>
                       </div>
@@ -139,4 +113,4 @@ const InvestorLogout= () => {
   )
 }
 
-export default InvestorLogout
+export default UserLogout

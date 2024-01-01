@@ -1,10 +1,12 @@
 /******Register Form css********/
 .formContainer {
   margin: auto;
-  width: 80%;
+  width: 60%;
   background: red;
 }
-
+.container{
+  width: 50;
+}
 form p {
   font-size: large;
 }
@@ -70,7 +72,7 @@ section .container {
   margin: 20px;
   padding: 30px;
   padding-top: 50px;
-  width: 100%;
+  width: 80%;
   /* max-width: 650px; */
   align-content: center;
   /* height:50vh; */
@@ -140,8 +142,8 @@ section .container {
 
 @media only screen and (max-width: 300px) {
   input {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
     text-align: center;
     margin-right: 5px;
   }
@@ -149,7 +151,7 @@ section .container {
 /****/
 .register {
   margin-left: 5px;
-  width: 50%;
+  width: 100%;
   height: auto;
   display:inline-block;
   padding: 4px;
@@ -177,4 +179,64 @@ section .container {
 .errorData{
   text-align: center;
   color: red;
+}
+
+.card{
+   width: 50%;
+   height: 25%;
+    padding: 1em;
+  border: 1px solid #888;
+}
+.table thead th {
+  vertical-align: middle;
+  display: inline-block;
+  width: 19.1%;
+  border-bottom: 2px solid #dee2e6;
+}
+.table tbody td{
+   width: 30%;
+  border-bottom: 2px solid #dee2e6;
+}
+.search{
+  width: 400px;
+  height: 30px;
+  margin: 20px;
+  border: 1px solid;
+  padding-left: 20px;
+}
+.downloadButton{
+  align-items: center;
+    width: 25%;
+    background-color: cadetblue;
+  
+}
+.searchButton{
+  display:inline-flex;
+ 
+}
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.data-table th, .data-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f2f2f2;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+.data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
